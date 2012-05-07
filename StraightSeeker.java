@@ -4,8 +4,8 @@ import java.util.List;
 
 import android.util.Log;
 
-public class StupidSeeker extends Seeker {
-	public StupidSeeker(int x, int y) {
+public class StraightSeeker extends Seeker {
+	public StraightSeeker(int x, int y) {
 		super(x, y);
 	}
 

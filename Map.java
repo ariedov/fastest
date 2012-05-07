@@ -12,7 +12,7 @@ public class Map {
 	public int width, height;
 	
 	public Map(int width, int height) {
-		ant = new StupidSeeker(0, 0);
+		ant = new StraightSeeker(0, 0);
 		this.width = width;
 		this.height = height;
 	}
@@ -23,7 +23,7 @@ public class Map {
 		this.tonnels = new ArrayList<Tonnel>(map.tonnels);
 		this.width = map.width;
 		this.height = map.height;
-		ant = new StupidSeeker(0, 0);
+		ant = new StraightSeeker(0, 0);
 		
 	}
 	
