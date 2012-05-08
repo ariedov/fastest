@@ -54,7 +54,11 @@ public class Vertice {
 		return null;
 	}
 	
-	public List<Vertice> getAvailable() {
-		return available;
+	public void reset(boolean blocked, boolean seeker, boolean target) {
+		this.blocked = blocked;
+		this.seeker = seeker;
+		this.target = target;
+		this.cost = -1;
+		this.available.clear();
 	}
 }

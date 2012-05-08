@@ -17,7 +17,7 @@ public class StraightSeeker extends Seeker {
 		map.buildMap(this, target);
 		Vertice seekerPos = map.getSeekerPos();
 		Vertice targetPos = map.getTargetPos();
-		List<Vertice> available = seekerPos.getAvailable();
+		List<Vertice> available = seekerPos.available;
 				
 		int len = available.size();
 		if (len == 0) {

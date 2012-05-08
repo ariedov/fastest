@@ -15,6 +15,11 @@ public class Map {
 		ant = new StraightSeeker(0, 0);
 		this.width = width;
 		this.height = height;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				vertices.add(new Vertice(i, j, false, false, false));
+			}
+		}
 	}
 	
 	public Map(Map map) {
@@ -39,25 +44,24 @@ public class Map {
 	}
 	
 	public List<Vertice> buildMap(Seeker seeker, Target target) {
-		vertices.clear();
-		//let's imagine, that all of this values, is not too big
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				boolean blocked = true;
-				boolean isSeeker = false;
-				boolean isTarget = false;
-				ant.move(i, j);
-				if (isSafe())
-					blocked = false;
-				if (seeker.x == ant.x && seeker.y == ant.y)
-					isSeeker = true;
-				if (target.x == ant.x && target.y == ant.y)
-					isTarget = true;
-				vertices.add(new Vertice(i, j, blocked, isSeeker, isTarget));
-			}
+		int len = vertices.size();
+		for (int i = 0; i < len; i++) {
+			Vertice v = vertices.get(i);		
+			
+			boolean blocked = true;
+			boolean isSeeker = false;
+			boolean isTarget = false;
+			ant.move(v.x, v.y);
+			if (isSafe())
+				blocked = false;
+			if (seeker.x == ant.x && seeker.y == ant.y)
+				isSeeker = true;
+			if (target.x == ant.x && target.y == ant.y)
+				isTarget = true;
+		
+			v.reset(blocked, isSeeker, isTarget);
 		}
 		
-		int len = vertices.size();
 		for (int i = 0; i < len; i++) {
 			Vertice current = vertices.get(i);
 			Tonnel tonnel = current.getCurrentTonnel(tonnels);
